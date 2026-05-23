@@ -28,18 +28,24 @@ def profile(df, name):
 
     # TODO: In ra shape (số dòng x số cột)
     # Gợi ý: df.shape
+    print(df.shape)
 
     # TODO: In ra danh sách cột và kiểu dữ liệu
     # Gợi ý: df.info()
+    print(df.info())
 
     # TODO: Tính % null của từng cột, chỉ in ra cột có null > 0
     # Gợi ý: df.isnull().sum() / len(df) * 100
+    null_pct = df.isnull().sum() / len(df) * 100
+    print(null_pct[null_pct > 0])
 
     # TODO: Đếm số dòng duplicate
     # Gợi ý: df.duplicated().sum()
+    print(df.duplicated().sum())
 
     # TODO: Với các cột số, in df.describe() để xem min/max/mean
     # Gợi ý: df.describe()
+    print(df.describe())
 
     print("→ GHI CHÚ CỦA TÔI:")
     print("   (bạn tự viết vào đây sau khi đọc kết quả)")
