@@ -1,0 +1,3 @@
+-- analysis_queries.sql
+-- Sẽ được viết từ Ngày 6 trở đi
+-- Bao gồm: doanh thu, RFM, tồn kho
