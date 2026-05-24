@@ -54,33 +54,43 @@ def profile(df, name):
 # ── Load và profile từng file ──────────────────────────────────────────────────
 
 # File 1: Đơn hàng
+chi_tiet_don_hang = pd.read_csv(f"{RAW}/chi_tiet_don_hang.csv", encoding="utf-8-sig")
+profile(chi_tiet_don_hang, "chi_tiet_don_hang.csv")
+
+# # File 2: Chi tiết đơn hàng
 don_hang = pd.read_csv(f"{RAW}/don_hang_2020_2024.csv", encoding="utf-8-sig")
 profile(don_hang, "don_hang_2020_2024.csv")
 
-# File 2: Chi tiết đơn hàng
-# TODO: load file chi_tiet_don_hang.csv rồi gọi profile()
-
-# File 3: Danh mục sản phẩm
-# TODO: load file danh_muc_san_pham.csv rồi gọi profile()
+# # File 3: Danh mục sản phẩm
+dm_sanpham = pd.read_csv(f"{RAW}/danh_muc_san_pham.csv", encoding="utf-8-sig")
+profile(dm_sanpham, "danh_muc_san_pham.csv")
 
 # File 4 & 5: Khách hàng (2 file riêng)
-# TODO: load cả 2 file khách hàng, so sánh tên cột giữa 2 file
-# Gợi ý: print(df_a.columns.tolist()) và print(df_b.columns.tolist())
+kh_2020_2022 = pd.read_csv(f"{RAW}/khach_hang_2020_2022.csv", encoding="utf-8-sig")
+profile(kh_2020_2022, "khach_hang_2020_2022.csv")
+
+kh_2023_2024 = pd.read_csv(f"{RAW}/khach_hang_2023_2024.csv", encoding="utf-8-sig")
+profile(kh_2023_2024, "khach_hang_2023_2024.csv")
 
 # File 6: Phiếu nhập kho
-# TODO
+phieu_nhap_kho = pd.read_csv(f"{RAW}/phieu_nhap_kho.csv", encoding="utf-8-sig")
+profile(phieu_nhap_kho, "phieu_nhap_kho.csv")
 
 # File 7: Cửa hàng
-# TODO
+danh_sach_cua_hang = pd.read_csv(f"{RAW}/danh_sach_cua_hang.csv", encoding="utf-8-sig")
+profile(danh_sach_cua_hang, "danh_sach_cua_hang.csv")
 
 # File 8: Tồn kho tháng
-# TODO
+ton_kho_hang_thang = pd.read_csv(f"{RAW}/ton_kho_hang_thang.csv", encoding="utf-8-sig")
+profile(ton_kho_hang_thang, "ton_kho_hang_thang.csv")
 
 # File 9: Chương trình khuyến mãi
-# TODO
+chuong_trinh_khuyen_mai = pd.read_csv(f"{RAW}/chuong_trinh_khuyen_mai.csv", encoding="utf-8-sig")
+profile(chuong_trinh_khuyen_mai, "chuong_trinh_khuyen_mai.csv")
 
 # File 10: Nhà cung cấp
-# TODO
+danh_sach_nha_cung_cap = pd.read_csv(f"{RAW}/danh_sach_nha_cung_cap.csv", encoding="utf-8-sig")
+profile(danh_sach_nha_cung_cap, "danh_sach_nha_cung_cap.csv")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -88,10 +98,13 @@ profile(don_hang, "don_hang_2020_2024.csv")
 # ══════════════════════════════════════════════════════════════════════════════
 """
 FILE: don_hang_2020_2024.csv
-  - Số dòng / cột    :
-  - Null đáng chú ý  :
-  - Duplicate        :
-  - Vấn đề phát hiện :
+  - Số dòng / cột    : (122400, 10)
+  - Null đáng chú ý  : Ma_khach_hang ->  88376 non-null
+  - Duplicate        : Mã đơn hàng -> 2400
+  - Vấn đề phát hiện : 3 vấn đề
+    + Mã khách hàng null 27,8% do là khách hàng lẻ/khách vãng lai, không lưu thông tin khách hàng.
+    + Mã khách hàng trùng tên là do nhân viên nhập đơn 2 lần giống y hệt nhau với tỷ lệ 2%
+    + 75th percentile là 0, điều này nói lên rất ít giảm giá, khi giảm giá thì sẽ giảm giá lớn
 
 FILE: chi_tiet_don_hang.csv
   - Số dòng / cột    :
